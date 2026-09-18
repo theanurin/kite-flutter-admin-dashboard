@@ -1,5 +1,7 @@
 {
   "@@locale": "es",
+  "localeEnglishName": "Spanish",
+  "localeNativeName": "Español",
   "appName": "Kite",
   "navOverview": "Resumen",
   "navManage": "Gestionar",

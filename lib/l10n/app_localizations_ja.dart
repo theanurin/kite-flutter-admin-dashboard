@@ -10,6 +10,12 @@ class LJa extends L {
   LJa([String locale = 'ja']) : super(locale);
 
   @override
+  String get localeEnglishName => 'Japanese';
+
+  @override
+  String get localeNativeName => '日本語';
+
+  @override
   String get appName => 'Kite';
 
   @override

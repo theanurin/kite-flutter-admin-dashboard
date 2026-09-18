@@ -10,6 +10,12 @@ class LFr extends L {
   LFr([String locale = 'fr']) : super(locale);
 
   @override
+  String get localeEnglishName => 'French';
+
+  @override
+  String get localeNativeName => 'Français';
+
+  @override
   String get appName => 'Kite';
 
   @override

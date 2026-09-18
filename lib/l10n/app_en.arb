@@ -1,6 +1,8 @@
 {
   "@@locale": "en",
-  "appName": "Kite",
+  "localeEnglishName": "English",
+  "localeNativeName": "English",
+ "appName": "Kite",
   "navOverview": "Overview",
   "navManage": "Manage",
   "navApps": "Apps",

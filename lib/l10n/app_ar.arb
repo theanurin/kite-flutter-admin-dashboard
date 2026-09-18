@@ -1,5 +1,7 @@
 {
   "@@locale": "ar",
+  "localeEnglishName": "Arabic",
+  "localeNativeName": "العربية",
   "appName": "Kite",
   "navOverview": "نظرة عامة",
   "navManage": "الإدارة",

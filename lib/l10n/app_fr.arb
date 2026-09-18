@@ -1,5 +1,7 @@
 {
   "@@locale": "fr",
+  "localeEnglishName": "French",
+  "localeNativeName": "Français",
   "appName": "Kite",
   "navOverview": "Aperçu",
   "navManage": "Gérer",

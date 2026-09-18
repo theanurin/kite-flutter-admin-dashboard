@@ -10,6 +10,12 @@ class LEs extends L {
   LEs([String locale = 'es']) : super(locale);
 
   @override
+  String get localeEnglishName => 'Spanish';
+
+  @override
+  String get localeNativeName => 'Español';
+
+  @override
   String get appName => 'Kite';
 
   @override

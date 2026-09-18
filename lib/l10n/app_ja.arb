@@ -1,5 +1,7 @@
 {
   "@@locale": "ja",
+  "localeEnglishName": "Japanese",
+  "localeNativeName": "日本語",
   "appName": "Kite",
   "navOverview": "概要",
   "navManage": "管理",

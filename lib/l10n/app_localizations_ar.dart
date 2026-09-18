@@ -10,6 +10,12 @@ class LAr extends L {
   LAr([String locale = 'ar']) : super(locale);
 
   @override
+  String get localeEnglishName => 'Arabic';
+
+  @override
+  String get localeNativeName => 'العربية';
+
+  @override
   String get appName => 'Kite';
 
   @override

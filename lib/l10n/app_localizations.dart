@@ -103,6 +103,18 @@ abstract class L {
     Locale('ja'),
   ];
 
+  /// No description provided for @localeEnglishName.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get localeEnglishName;
+
+  /// No description provided for @localeNativeName.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get localeNativeName;
+
   /// No description provided for @appName.
   ///
   /// In en, this message translates to:
