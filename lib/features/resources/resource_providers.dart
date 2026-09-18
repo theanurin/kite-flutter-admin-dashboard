@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../core/data/data_provider.dart';
-import '../../core/data/mock_data_provider.dart';
+import '../../core/data/data_provider.dart' show ListParams, ListResult;
+import '../../core/data/mock_data_provider.dart' show dataProvider;
 
 /// Query state, keyed by resource.
 ///

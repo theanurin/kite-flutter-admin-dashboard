@@ -1,8 +1,25 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:kite_ui/kite_ui.dart';
+import 'package:flutter/material.dart'
+    show
+        BoxConstraints,
+        BuildContext,
+        Center,
+        Column,
+        ConstrainedBox,
+        MainAxisAlignment,
+        MainAxisSize,
+        Row,
+        Scaffold,
+        SizedBox,
+        StatelessWidget,
+        Text,
+        TextAlign,
+        VoidCallback,
+        Widget;
+import 'package:go_router/go_router.dart' show GoRouterHelper;
+import 'package:kite_ui/kite_ui.dart'
+    show KiteButton, KiteColors, KiteSpace, KiteText;
 
-import '../../core/router/routes.dart';
+import '../../core/router/routes.dart' show R;
 
 class NotFoundScreen extends StatelessWidget {
   const NotFoundScreen({super.key, required this.location});

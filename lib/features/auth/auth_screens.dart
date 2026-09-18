@@ -1,11 +1,39 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:kite_ui/kite_ui.dart';
+import 'package:flutter/material.dart'
+    show
+        Alignment,
+        BorderSide,
+        BoxDecoration,
+        BoxShape,
+        BuildContext,
+        Container,
+        EdgeInsets,
+        Expanded,
+        FocusNode,
+        GestureDetector,
+        Icon,
+        Icons,
+        InputDecoration,
+        MainAxisAlignment,
+        OutlineInputBorder,
+        Row,
+        SizedBox,
+        State,
+        StatefulWidget,
+        Text,
+        TextAlign,
+        TextEditingController,
+        TextField,
+        TextInputType,
+        Widget;
+import 'package:flutter_riverpod/flutter_riverpod.dart'
+    show ConsumerState, ConsumerStatefulWidget;
+import 'package:go_router/go_router.dart' show GoRouterHelper;
+import 'package:kite_ui/kite_ui.dart'
+    show KiteButton, KiteColors, KiteRadius, KiteSpace, KiteText;
 
-import '../../core/auth/session.dart';
-import '../../core/router/routes.dart';
-import 'auth_scaffold.dart';
+import '../../core/auth/session.dart' show sessionProvider;
+import '../../core/router/routes.dart' show R;
+import 'auth_scaffold.dart' show AuthField, AuthScaffold;
 
 class SignInScreen extends ConsumerStatefulWidget {
   const SignInScreen({super.key});

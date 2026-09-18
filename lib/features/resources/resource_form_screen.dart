@@ -1,14 +1,48 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:kite_ui/kite_ui.dart';
+import 'package:flutter/material.dart'
+    show
+        Align,
+        AlignmentDirectional,
+        BoxConstraints,
+        BuildContext,
+        Column,
+        ConstrainedBox,
+        CrossAxisAlignment,
+        EdgeInsets,
+        MainAxisSize,
+        Row,
+        SingleChildScrollView,
+        SizedBox,
+        Text,
+        TextEditingController,
+        TextInputType,
+        Widget;
+import 'package:flutter_riverpod/flutter_riverpod.dart'
+    show
+        AsyncValueExtensions,
+        ConsumerState,
+        ConsumerStatefulWidget,
+        ConsumerWidget,
+        WidgetRef;
+import 'package:go_router/go_router.dart' show GoRouterHelper;
+import 'package:kite_ui/kite_ui.dart'
+    show
+        KiteButton,
+        KiteCard,
+        KiteField,
+        KiteInput,
+        KiteSelect,
+        KiteSpace,
+        KiteText,
+        KiteTextarea,
+        KiteToast,
+        KiteTone;
 
-import '../../core/data/data_provider.dart';
-import '../../core/data/mock_data_provider.dart';
-import '../../shared/widgets/states.dart';
-import 'resource_detail_screen.dart';
-import 'resource_providers.dart';
-import 'resource_schema.dart';
+import '../../core/data/data_provider.dart' show DataProviderException, JsonMap;
+import '../../core/data/mock_data_provider.dart' show dataProvider;
+import '../../shared/widgets/states.dart' show ErrorState, LoadingState;
+import './resource_detail_screen.dart' show recordProvider;
+import './resource_providers.dart' show listProvider;
+import './resource_schema.dart' show ColKind, FieldSpec, ResourceSpec, kResources;
 
 /// Create and edit, from the same screen.
 ///

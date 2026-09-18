@@ -1,26 +1,26 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter/widgets.dart' show ChangeNotifier;
+import 'package:flutter_riverpod/flutter_riverpod.dart' show Provider, Ref;
+import 'package:go_router/go_router.dart' show GoRoute, GoRouter, ShellRoute;
 
-import '../../features/apps/calendar_screen.dart';
-import '../../features/apps/chat_screen.dart';
-import '../../features/apps/inbox_screen.dart';
-import '../../features/apps/kanban_screen.dart';
-import '../../features/auth/auth_screens.dart';
-import '../../features/components/components_screen.dart';
-import '../../features/dashboard/dashboard_screen.dart';
-import '../../features/dashboard/project_dashboard_screen.dart';
-import '../../features/forms/forms_screen.dart';
-import '../../features/forms/wizard_screen.dart';
-import '../../features/resources/resource_detail_screen.dart';
-import '../../features/resources/resource_form_screen.dart';
-import '../../features/resources/resource_list_screen.dart';
-import '../../features/system/error_screen.dart';
-import '../../features/system/profile_screen.dart';
-import '../../features/system/settings_screen.dart';
-import '../../shared/layout/app_shell.dart';
-import '../auth/session.dart';
-import 'routes.dart';
+import '../../features/apps/calendar_screen.dart' show CalendarScreen;
+import '../../features/apps/chat_screen.dart' show ChatScreen;
+import '../../features/apps/inbox_screen.dart' show InboxScreen;
+import '../../features/apps/kanban_screen.dart' show KanbanScreen;
+import '../../features/auth/auth_screens.dart' show ForgotPasswordScreen, LockScreen, OtpScreen, SignInScreen, SignUpScreen;
+import '../../features/components/components_screen.dart' show ComponentsScreen;
+import '../../features/dashboard/dashboard_screen.dart' show DashboardScreen;
+import '../../features/dashboard/project_dashboard_screen.dart' show ProjectDashboardScreen;
+import '../../features/forms/forms_screen.dart' show FormsScreen;
+import '../../features/forms/wizard_screen.dart' show WizardScreen;
+import '../../features/resources/resource_detail_screen.dart' show ResourceDetailScreen;
+import '../../features/resources/resource_form_screen.dart' show ResourceFormScreen;
+import '../../features/resources/resource_list_screen.dart' show ResourceListScreen;
+import '../../features/system/error_screen.dart' show NotFoundScreen, ServerErrorScreen;
+import '../../features/system/profile_screen.dart' show ProfileScreen;
+import '../../features/system/settings_screen.dart' show SettingsScreen;
+import '../../shared/layout/app_shell.dart' show AppShell;
+import '../auth/session.dart' show sessionProvider;
+import 'routes.dart' show R;
 
 /// Bridges Riverpod state into go_router's `refreshListenable`, so signing in
 /// or out re-evaluates the guard immediately rather than on the next

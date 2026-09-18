@@ -1,8 +1,45 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kite_ui/kite_ui.dart';
+import 'package:flutter/material.dart'
+    show
+        Align,
+        AlignmentDirectional,
+        BoxConstraints,
+        BuildContext,
+        Column,
+        ConstrainedBox,
+        CrossAxisAlignment,
+        EdgeInsets,
+        Expanded,
+        MainAxisSize,
+        Padding,
+        Row,
+        SingleChildScrollView,
+        SizedBox,
+        StatelessWidget,
+        Text,
+        TextEditingController,
+        TextInputType,
+        Widget;
+import 'package:flutter_riverpod/flutter_riverpod.dart'
+    show ConsumerState, ConsumerStatefulWidget;
+import 'package:kite_ui/kite_ui.dart'
+    show
+        KiteAvatar,
+        KiteBadge,
+        KiteBreak,
+        KiteButton,
+        KiteCard,
+        KiteField,
+        KiteInput,
+        KiteSeparator,
+        KiteSpace,
+        KiteSwitch,
+        KiteText,
+        KiteTextarea,
+        KiteToast,
+        KiteTone,
+        kiteConfirm;
 
-import '../../core/auth/session.dart';
+import '../../core/auth/session.dart' show sessionProvider;
 
 class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});

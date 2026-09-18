@@ -1,13 +1,46 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:kite_ui/kite_ui.dart';
+import 'package:flutter/material.dart'
+    show
+        Align,
+        AlignmentDirectional,
+        BoxConstraints,
+        BuildContext,
+        Column,
+        ConstrainedBox,
+        CrossAxisAlignment,
+        EdgeInsets,
+        Expanded,
+        Icon,
+        Icons,
+        InkWell,
+        MainAxisSize,
+        Padding,
+        Row,
+        SingleChildScrollView,
+        SizedBox,
+        StatelessWidget,
+        Text,
+        Widget;
+import 'package:flutter_riverpod/flutter_riverpod.dart'
+    show AsyncValueExtensions, ConsumerWidget, FutureProvider, Ref, WidgetRef;
+import 'package:go_router/go_router.dart' show GoRouterHelper;
+import 'package:kite_ui/kite_ui.dart'
+    show
+        KiteBadge,
+        KiteButton,
+        KiteCard,
+        KiteColors,
+        KiteFormat,
+        KiteSpace,
+        KiteText,
+        KiteToast,
+        KiteTone,
+        kiteConfirm;
 
-import '../../core/data/data_provider.dart';
-import '../../core/data/mock_data_provider.dart';
-import '../../shared/widgets/states.dart';
-import 'resource_providers.dart';
-import 'resource_schema.dart';
+import '../../core/data/data_provider.dart' show DataProviderException, JsonMap;
+import '../../core/data/mock_data_provider.dart' show dataProvider;
+import '../../shared/widgets/states.dart' show ErrorState, LoadingState;
+import './resource_providers.dart' show listProvider;
+import './resource_schema.dart' show ColKind, FieldSpec, ResourceSpec, kResources;
 
 final recordProvider = FutureProvider.family<JsonMap, (String, String)>((
   Ref ref,

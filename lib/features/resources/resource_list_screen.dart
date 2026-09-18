@@ -1,12 +1,53 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:kite_ui/kite_ui.dart';
+import 'package:flutter/material.dart'
+    show
+        Border,
+        BoxDecoration,
+        BuildContext,
+        Column,
+        Container,
+        CrossAxisAlignment,
+        EdgeInsets,
+        Expanded,
+        Icon,
+        Icons,
+        InkWell,
+        Material,
+        Padding,
+        Row,
+        SizedBox,
+        Spacer,
+        StatelessWidget,
+        Text,
+        VoidCallback,
+        Widget,
+        Wrap,
+        WrapCrossAlignment;
+import 'package:flutter_riverpod/flutter_riverpod.dart'
+    show AsyncValueExtensions, ConsumerWidget, WidgetRef;
+import 'package:go_router/go_router.dart' show GoRouterHelper;
+import 'package:kite_ui/kite_ui.dart'
+    show
+        KiteButton,
+        KiteColors,
+        KiteDataTable,
+        KiteInput,
+        KiteRadius,
+        KiteSpace,
+        KiteText,
+        KiteToast,
+        KiteTooltip,
+        TrinaCell,
+        TrinaColumn,
+        TrinaColumnTextAlign,
+        TrinaColumnType,
+        TrinaRow;
 
-import '../../core/data/data_provider.dart';
-import '../../shared/widgets/states.dart';
-import 'resource_providers.dart';
-import 'resource_schema.dart';
+import '../../core/data/data_provider.dart'
+    show DataProviderException, ListParams, ListResult;
+import '../../shared/widgets/states.dart'
+    show EmptyState, ErrorState, LoadingState;
+import './resource_providers.dart' show listParamsProvider, listProvider;
+import './resource_schema.dart' show ColKind, ResourceSpec, kResources;
 
 class ResourceListScreen extends ConsumerWidget {
   const ResourceListScreen({super.key, required this.resource});

@@ -1,12 +1,67 @@
-import 'dart:math';
+import 'dart:math' show Random;
 
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kite_ui/kite_ui.dart';
+import 'package:flutter/material.dart'
+    show
+        Align,
+        AlignmentDirectional,
+        Border,
+        BorderRadius,
+        BoxDecoration,
+        BoxShape,
+        BuildContext,
+        ClipRRect,
+        Color,
+        Column,
+        Container,
+        CrossAxisAlignment,
+        EdgeInsets,
+        Expanded,
+        FontFeature,
+        FontWeight,
+        FractionallySizedBox,
+        Icon,
+        Icons,
+        IntrinsicHeight,
+        MainAxisAlignment,
+        MainAxisSize,
+        Padding,
+        Row,
+        SingleChildScrollView,
+        SizedBox,
+        StatelessWidget,
+        Text,
+        TextAlign,
+        TextOverflow,
+        TextSpan,
+        Widget;
+import 'package:flutter_riverpod/flutter_riverpod.dart'
+    show AsyncValueExtensions, ConsumerWidget, FutureProvider, Ref, WidgetRef;
+import 'package:kite_ui/kite_ui.dart'
+    show
+        KiteAvatar,
+        KiteBadge,
+        KiteBarRow,
+        KiteBreak,
+        KiteButton,
+        KiteCard,
+        KiteColors,
+        KiteDonut,
+        KiteFormat,
+        KiteLineChart,
+        KiteRadius,
+        KiteSeparator,
+        KiteSlice,
+        KiteSpace,
+        KiteSparkline,
+        KiteStatGrid,
+        KiteText,
+        KiteToast,
+        KiteTone;
 
-import '../../core/data/data_provider.dart';
-import '../../core/data/mock_data_provider.dart';
-import '../../shared/widgets/states.dart';
+import '../../core/data/data_provider.dart'
+    show JsonMap, ListParams, ListResult, SortDir, SortSpec;
+import '../../core/data/mock_data_provider.dart' show dataProvider;
+import '../../shared/widgets/states.dart' show ErrorState, LoadingState;
 
 final _recentProvider = FutureProvider<ListResult>((Ref ref) async {
   return ref
