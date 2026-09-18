@@ -1,11 +1,37 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kite_ui/kite_ui.dart';
+import 'package:flutter/material.dart'
+    show
+        Align,
+        AlignmentDirectional,
+        BoxConstraints,
+        BuildContext,
+        ButtonSegment,
+        ChoiceChip,
+        Column,
+        ConstrainedBox,
+        CrossAxisAlignment,
+        EdgeInsets,
+        Expanded,
+        FontWeight,
+        MainAxisSize,
+        Padding,
+        Row,
+        SegmentedButton,
+        SingleChildScrollView,
+        SizedBox,
+        StatelessWidget,
+        Text,
+        ThemeMode,
+        Widget,
+        Wrap;
+import 'package:flutter_riverpod/flutter_riverpod.dart'
+    show ConsumerWidget, WidgetRef;
+import 'package:kite_ui/kite_ui.dart'
+    show KiteButton, KiteCard, KiteSpace, KiteText;
 
-import '../../core/auth/session.dart';
-import '../../core/l10n/locale_controller.dart';
-import '../../core/theme/app_theme.dart';
-import '../../l10n/app_localizations.dart';
+import '../../core/auth/session.dart' show sessionProvider;
+import '../../core/l10n/locale_controller.dart' show LocaleController, localeProvider;
+import '../../core/theme/app_theme.dart' show KiteAccent, themeProvider;
+import '../../l10n/app_localizations.dart' show L, lookupL;
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -13,7 +39,7 @@ class SettingsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(themeProvider);
-    final locale = ref.watch(localeProvider);
+    // final locale = ref.watch(localeProvider);
     final l = L.of(context);
     final controller = ref.read(themeProvider.notifier);
     final user = ref.watch(sessionProvider);
@@ -93,12 +119,12 @@ class SettingsScreen extends ConsumerWidget {
                       spacing: KiteSpace.sm,
                       runSpacing: KiteSpace.sm,
                       children: [
-                        for (final option in KiteLocale.values)
+                        for (final locale in LocaleController.sortedLocales)
                           ChoiceChip(
-                            label: Text(option.nativeName),
-                            selected: locale == option,
+                            label: Text(lookupL(locale).localeNativeName),
+                            selected: locale == locale,
                             onSelected: (_) =>
-                                ref.read(localeProvider.notifier).set(option),
+                                ref.read(localeProvider.notifier).set(locale),
                           ),
                       ],
                     ),

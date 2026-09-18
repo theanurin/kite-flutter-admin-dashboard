@@ -1,8 +1,8 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:flutter/widgets.dart' show WidgetsFlutterBinding, runApp;
+import 'package:flutter_riverpod/flutter_riverpod.dart' show ProviderScope;
+import 'package:flutter_web_plugins/url_strategy.dart' show usePathUrlStrategy;
 
-import 'app.dart';
+import 'app.dart' show App;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,5 +15,5 @@ void main() {
   // does; so do Cloudflare Pages, Netlify and Vercel by default.
   usePathUrlStrategy();
 
-  runApp(const ProviderScope(child: KiteApp()));
+  runApp(const ProviderScope(child: App()));
 }

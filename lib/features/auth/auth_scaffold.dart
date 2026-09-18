@@ -1,6 +1,33 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        BoxConstraints,
+        BuildContext,
+        Center,
+        Column,
+        ConstrainedBox,
+        CrossAxisAlignment,
+        DefaultTextStyle,
+        EdgeInsets,
+        Icon,
+        Icons,
+        MainAxisAlignment,
+        MainAxisSize,
+        Row,
+        Scaffold,
+        SingleChildScrollView,
+        SizedBox,
+        StatelessWidget,
+        Text,
+        TextAlign,
+        TextEditingController,
+        TextInputType,
+        ValueChanged,
+        Widget;
 
-import 'package:kite_ui/kite_ui.dart';
+import 'package:kite_ui/kite_ui.dart'
+    show KiteCard, KiteColors, KiteField, KiteInput, KiteSpace, KiteText;
+
+import '../../l10n/app_localizations.dart' show L;
 
 /// Shared frame for the five auth screens: centred card, product mark, and a
 /// footer link. Keeps them consistent without five copies of the same layout.
@@ -22,6 +49,7 @@ class AuthScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = KiteColors.of(context);
     final t = KiteText.of(context);
+    final l = L.of(context);
     return Scaffold(
       backgroundColor: c.background,
       body: Center(
@@ -38,7 +66,7 @@ class AuthScaffold extends StatelessWidget {
                   children: [
                     Icon(Icons.change_history, size: 22, color: c.primary),
                     const SizedBox(width: KiteSpace.sm),
-                    Text('Kite', style: t.h4),
+                    Text(l.appName, style: t.h4),
                   ],
                 ),
                 const SizedBox(height: KiteSpace.xxl),

@@ -1,14 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kite_ui/shadcn.dart';
+import 'dart:ui' show Brightness;
 
-import 'core/l10n/locale_controller.dart';
-import 'core/router/app_router.dart';
-import 'core/theme/app_theme.dart';
-import 'l10n/app_localizations.dart';
+import 'package:flutter/material.dart' show BuildContext, Widget;
+import 'package:flutter_riverpod/flutter_riverpod.dart' show ConsumerWidget, WidgetRef;
+import 'package:kite_ui/shadcn.dart' show ShadApp;
 
-class KiteApp extends ConsumerWidget {
-  const KiteApp({super.key});
+import './core/l10n/locale_controller.dart' show localeProvider;
+import './core/router/app_router.dart' show routerProvider;
+import './core/theme/app_theme.dart' show themeProvider;
+import './l10n/app_localizations.dart' show L;
+
+class App extends ConsumerWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,7 +21,7 @@ class KiteApp extends ConsumerWidget {
       themeMode: theme.mode,
       theme: theme.data(Brightness.light),
       darkTheme: theme.data(Brightness.dark),
-      locale: locale.locale,
+      locale: locale,
       supportedLocales: L.supportedLocales,
       localizationsDelegates: L.localizationsDelegates,
       routerConfig: ref.watch(routerProvider),

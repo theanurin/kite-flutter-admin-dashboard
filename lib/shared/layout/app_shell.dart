@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:kite_ui/kite_ui.dart';
+import 'package:flutter/material.dart' show Alignment, Border, BorderDirectional, BorderRadius, BorderSide, BoxConstraints, BoxDecoration, BoxShape, Brightness, BuildContext, CallbackShortcuts, Colors, Column, Container, CrossAxisAlignment, DecoratedBox, Divider, Drawer, EdgeInsets, Expanded, Focus, FontWeight, Icon, IconButton, Icons, IgnorePointer, InkWell, ListView, MainAxisSize, Material, NavigationBar, NavigationDestination, Padding, PositionedDirectional, Row, SafeArea, Scaffold, SingleActivator, SizedBox, Spacer, Stack, StatelessWidget, Text, TextAlign, TextOverflow, Theme, Widget;
+import 'package:flutter/services.dart' show Brightness, FontWeight, LogicalKeyboardKey, TextAlign;
+import 'package:flutter_riverpod/flutter_riverpod.dart' show ConsumerWidget, WidgetRef;
+import 'package:go_router/go_router.dart' show GoRouterHelper;
+import 'package:kite_ui/kite_ui.dart' show KiteAvatar, KiteBadge, KiteBreak, KiteColors, KiteMenu, KiteMenuItem, KiteRadius, KiteSpace, KiteText, KiteToast, KiteTone, KiteTooltip;
 
-import '../../core/auth/session.dart';
-import '../../core/l10n/locale_controller.dart';
-import '../../core/router/routes.dart';
-import '../../core/theme/app_theme.dart';
-import '../../features/search/command_palette.dart';
-import '../../l10n/app_localizations.dart';
-import 'promo_card.dart';
+import '../../core/auth/session.dart' show sessionProvider;
+import '../../core/l10n/locale_controller.dart' show localeProvider;
+import '../../core/router/routes.dart' show NavItem, R, kNav, kNavGroups;
+import '../../core/theme/app_theme.dart' show themeProvider;
+import '../../features/search/command_palette.dart' show showCommandPalette;
+import '../../l10n/app_localizations.dart' show L;
+import 'promo_card.dart' show PromoCard, kShowPromo;
 
 /// The persistent shell.
 ///
@@ -88,6 +88,7 @@ class _SidebarBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = KiteColors.of(context);
     final t = KiteText.of(context);
+    final l = L.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -102,7 +103,7 @@ class _SidebarBody extends StatelessWidget {
             children: [
               Icon(Icons.change_history, size: 20, color: c.primary),
               const SizedBox(width: KiteSpace.sm),
-              Text('Kite', style: t.h4),
+              Text(l.appName, style: t.h4),
             ],
           ),
         ),
@@ -263,7 +264,7 @@ class _TopBar extends ConsumerWidget {
             (n.path != '/' && location.startsWith('${n.path}/')))
           n,
     ]..sort((a, b) => b.path.length.compareTo(a.path.length));
-    final title = matches.isEmpty ? 'Kite' : matches.first.labelOf(l);
+    final title = matches.isEmpty ? l.appName : matches.first.labelOf(l);
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final wide = KiteBreak.isDesktop(context);
 
@@ -520,7 +521,7 @@ class _AccountMenu extends ConsumerWidget {
         KiteMenuItem(
           label: l.language,
           icon: Icons.translate,
-          trailing: locale.nativeName,
+          trailing: l.localeNativeName,
           onPressed: () => context.go(R.settings),
         ),
         const KiteMenuItem.separator(),
@@ -583,7 +584,7 @@ class _BottomBar extends StatelessWidget {
       onDestinationSelected: (i) => context.go(items[i].path),
       destinations: [
         for (final n in items)
-          NavigationDestination(icon: Icon(n.icon, size: 20), label: n.label),
+          NavigationDestination(icon: Icon(n.icon, size: 20), label: n.labelOf(L.of(context))),
       ],
     );
   }

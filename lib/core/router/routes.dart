@@ -37,10 +37,9 @@ abstract final class R {
 
 @immutable
 class NavItem {
-  const NavItem(this.label, this.path, this.icon, {this.inSidebar = true});
+  const NavItem(this.labelOf, this.path, this.icon, {this.inSidebar = true});
 
-  /// English label. Also the fallback if a translation is missing.
-  final String label;
+  final String Function(L l) labelOf; 
   final String path;
   final IconData icon;
 
@@ -51,26 +50,6 @@ class NavItem {
   /// real nav row under the promo card. It stays here so the command palette
   /// and the page-title lookup still resolve it.
   final bool inSidebar;
-
-  /// Localised label. Kept as a lookup rather than a stored string so the
-  /// sidebar re-reads it when the locale changes.
-  String labelOf(L l) => switch (path) {
-    R.dashboard => l.navDashboard,
-    R.projects => l.navProjects,
-    R.orders => l.navOrders,
-    R.customers => l.navCustomers,
-    R.products => l.navProducts,
-    R.inbox => l.navInbox,
-    R.kanban => l.navBoard,
-    R.calendar => l.navCalendar,
-    R.chat => l.navChat,
-    R.components => l.navComponents,
-    R.forms => l.navForms,
-    R.wizard => l.navWizard,
-    R.settings => l.navSettings,
-    R.profile => l.navProfile,
-    _ => label,
-  };
 }
 
 /// The sidebar on desktop, the bottom bar on mobile — same source, so the two
@@ -80,41 +59,33 @@ class NavItem {
 /// four labelled groups is a structure to scan.
 @immutable
 class NavGroup {
-  const NavGroup(this.label, this.items);
-  final String label;
+  const NavGroup(this.labelOf, this.items);
+  final String Function(L l) labelOf; 
   final List<NavItem> items;
-
-  String labelOf(L l) => switch (label) {
-    'Overview' => l.navOverview,
-    'Manage' => l.navManage,
-    'Apps' => l.navApps,
-    'Build' => l.navBuild,
-    _ => label,
-  };
 }
 
-const kNavGroups = <NavGroup>[
-  NavGroup('Overview', [
-    NavItem('Dashboard', R.dashboard, Icons.dashboard_outlined),
-    NavItem('Projects', R.projects, Icons.track_changes_outlined),
+final kNavGroups = <NavGroup>[
+  NavGroup((l) => l.navOverview, [
+    NavItem((l) => l.navDashboard, R.dashboard, Icons.dashboard_outlined),
+    NavItem((l) => l.navProjects, R.projects, Icons.track_changes_outlined),
   ]),
-  NavGroup('Manage', [
-    NavItem('Orders', R.orders, Icons.receipt_long_outlined),
-    NavItem('Customers', R.customers, Icons.people_outline),
-    NavItem('Products', R.products, Icons.inventory_2_outlined),
+  NavGroup((l) => l.navManage, [
+    NavItem((l) => l.navOrders, R.orders, Icons.receipt_long_outlined),
+    NavItem((l) => l.navCustomers, R.customers, Icons.people_outline),
+    NavItem((l) => l.navProducts, R.products, Icons.inventory_2_outlined),
   ]),
-  NavGroup('Apps', [
-    NavItem('Inbox', R.inbox, Icons.mail_outline),
-    NavItem('Board', R.kanban, Icons.view_kanban_outlined),
-    NavItem('Calendar', R.calendar, Icons.calendar_today_outlined),
-    NavItem('Chat', R.chat, Icons.chat_bubble_outline),
+  NavGroup((l) => l.navApps, [
+    NavItem((l) => l.navInbox, R.inbox, Icons.mail_outline),
+    NavItem((l) => l.navBoard, R.kanban, Icons.view_kanban_outlined),
+    NavItem((l) => l.navCalendar, R.calendar, Icons.calendar_today_outlined),
+    NavItem((l) => l.navChat, R.chat, Icons.chat_bubble_outline),
   ]),
-  NavGroup('Build', [
-    NavItem('Components', R.components, Icons.widgets_outlined),
-    NavItem('Forms', R.forms, Icons.edit_note_outlined),
-    NavItem('Wizard', R.wizard, Icons.linear_scale_outlined),
-    NavItem('Settings', R.settings, Icons.settings_outlined),
-    NavItem('Profile', R.profile, Icons.person_outline, inSidebar: false),
+  NavGroup((l) => l.navBuild, [
+    NavItem((l) => l.navComponents, R.components, Icons.widgets_outlined),
+    NavItem((l) => l.navForms, R.forms, Icons.edit_note_outlined),
+    NavItem((l) => l.navWizard, R.wizard, Icons.linear_scale_outlined),
+    NavItem((l) => l.navSettings, R.settings, Icons.settings_outlined),
+    NavItem((l) => l.navProfile, R.profile, Icons.person_outline, inSidebar: false),
   ]),
 ];
 
